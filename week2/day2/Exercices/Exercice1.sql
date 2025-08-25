@@ -1,0 +1,32 @@
+-- Database: Public
+
+-- DROP DATABASE IF EXISTS "Public";
+
+CREATE DATABASE "Public"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'fr-FR'
+    LC_CTYPE = 'fr-FR'
+    LOCALE_PROVIDER = 'libc'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+SELECT * 
+FROM items
+ORDER BY price ASC;
+
+SELECT * 
+FROM items
+WHERE price >= 80
+ORDER BY price DESC;
+
+SELECT first_name, last_name
+FROM customers
+ORDER BY first_name ASC
+LIMIT 3;
+
+SELECT last_name
+FROM customers
+ORDER BY last_name DESC;
