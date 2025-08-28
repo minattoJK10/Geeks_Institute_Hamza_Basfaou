@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Books • Library Manager{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-semibold mb-4">Books</h1>
+
+<form method="get" class="mb-4 flex gap-2 items-end">
+  <div>
+    <label class="block text-sm font-medium">Search</label>
+    <input type="text" name="q" value="{{ request.args.get('q','') }}" class="border rounded-lg px-3 py-2 w-64">
+  </div>
+  <div>
+    <label class="block text-sm font-medium">Year</label>
+    <input type="number" name="year" value="{{ request.args.get('year','') }}" class="border rounded-lg px-3 py-2 w-32">
+  </div>
+  <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">Filter</button>
+  <a href="{{ url_for('home') }}" class="px-4 py-2 bg-gray-200 rounded-lg">Reset</a>
+</form>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {% for book in books.items %}
+  <div class="bg-white rounded-xl shadow p-4 flex flex-col">
+    <div class="flex-1">
+      <h2 class="text-lg font-semibold">{{ book.title }}</h2>
+      <p class="text-sm text-gray-600">
+        {% if book.year %}{{ book.year }} • {% endif %}
+        {% if book.category %}{{ book.category }}{% else %}Uncategorized{% endif %}
+      </p>
+      <p class="mt-2 text-sm">By: 
+        {% if book.authors %}
+         {{ book.authors | map(attribute='name') | join(', ') }}
+        {% else %}
+         <em>Unknown author</em>
+        {% endif %}
+      </p>
+      {% if book.rating is not none %}
+        <p class="mt-2 text-yellow-600"><i class="bi bi-star-fill"></i> {{ book.rating }}/5</p>
+      {% endif %}
+    </div>
+    <div class="mt-3 flex gap-2">
+      <a href="{{ url_for('details', book_id=book.id) }}" class="px-3 py-2 bg-gray-200 rounded-lg">Details</a>
+      <a href="{{ url_for('edit_book', book_id=book.id) }}" class="px-3 py-2 bg-amber-500 text-white rounded-lg">Edit</a>
+      <form action="{{ url_for('delete_book', book_id=book.id) }}" method="post" onsubmit="return confirm('Delete this book?');">
+        <button class="px-3 py-2 bg-red-600 text-white rounded-lg">Delete</button>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Pagination -->
+<div class="mt-6 flex justify-center gap-2">
+  {% if books.has_prev %}
+    <a class="px-3 py-1 border rounded-lg" href="{{ url_for('home', page=books.prev_num, q=request.args.get('q'), year=request.args.get('year')) }}">Prev</a>
+  {% endif %}
+  <span class="px-3 py-1">{{ books.page }} / {{ books.pages or 1 }}</span>
+  {% if books.has_next %}
+    <a class="px-3 py-1 border rounded-lg" href="{{ url_for('home', page=books.next_num, q=request.args.get('q'), year=request.args.get('year')) }}">Next</a>
+  {% endif %}
+</div>
+{% endblock %}

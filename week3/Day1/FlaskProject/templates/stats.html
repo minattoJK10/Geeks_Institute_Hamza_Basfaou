@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Statistics{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-semibold mb-4">Statistics</h1>
+
+<div class="grid md:grid-cols-2 gap-6">
+  <div class="bg-white p-4 rounded-xl shadow">
+    <h2 class="font-semibold mb-2">Books per Year</h2>
+    <canvas id="booksPerYear"></canvas>
+  </div>
+  <div class="bg-white p-4 rounded-xl shadow">
+    <h2 class="font-semibold mb-2">Top Authors by Book Count</h2>
+    <canvas id="topAuthors"></canvas>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const bpyCtx = document.getElementById('booksPerYear');
+    new Chart(bpyCtx, {
+      type: 'bar',
+      data: {
+        labels: {{ books_per_year_labels|tojson }},
+        datasets: [{
+          label: 'Books',
+          data: {{ books_per_year_counts|tojson }},
+        }]
+      }
+    });
+
+    const taCtx = document.getElementById('topAuthors');
+    new Chart(taCtx, {
+      type: 'bar',
+      data: {
+        labels: {{ top_authors_labels|tojson }},
+        datasets: [{
+          label: 'Books',
+          data: {{ top_authors_counts|tojson }},
+        }]
+      }
+    });
+  });
+</script>
+{% endblock %}
