@@ -1,25 +1,35 @@
-// Step 1: Prompt the user for words separated by commas
-let userInput = prompt("Enter several words separated by commas:");
+// Frame Program - Dynamic Border
 
-// Step 2: Convert the string into an array and trim extra spaces
-let words = userInput.split(",").map(word => word.trim());
+// Step 1: Get input from the user
+const readline = require("readline");
 
-// Step 3: Find the length of the longest word
-let maxLength = 0;
-for (let word of words) {
-  if (word.length > maxLength) {
-    maxLength = word.length;
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question("Enter words separated by commas: ", function(userInput) {
+  // Step 2: Split and clean words
+  let words = userInput.split(",").map(word => word.trim());
+
+  // Step 3: Find the longest word
+  let maxLength = 0;
+  for (let word of words) {
+    if (word.length > maxLength) {
+      maxLength = word.length;
+    }
   }
-}
 
-// Step 4: Create the top and bottom border
-let border = "*".repeat(maxLength + 4);
+  // Step 4: Create the top and bottom border
+  let border = "*".repeat(maxLength + 4);
 
-// Step 5: Print the frame
-console.log(border);
-for (let word of words) {
-  // Pad words with spaces so they align perfectly
-  let paddedWord = word.padEnd(maxLength, " ");
-  console.log(`* ${paddedWord} *`);
-}
-console.log(border);
+  // Step 5: Print the frame
+  console.log(border);
+  for (let word of words) {
+    let paddedWord = word.padEnd(maxLength, " ");
+    console.log(`* ${paddedWord} *`);
+  }
+  console.log(border);
+
+  rl.close();
+});
