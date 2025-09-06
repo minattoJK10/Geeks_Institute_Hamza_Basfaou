@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Events List{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">All Events</h1>
+
+<form method="get" class="mb-4 flex">
+  <input type="text" name="q" placeholder="Search events..."
+         class="border rounded p-2 flex-grow" value="{{ request.args.get('q', '') }}">
+  <button class="ml-2 px-4 py-2 bg-blue-600 text-white rounded">Search</button>
+</form>
+
+<ul class="space-y-2">
+  {% for event in events.items %}
+    <li class="p-4 border rounded bg-white">
+      <a href="{{ url_for('events.details_event', event_id=event.id) }}" class="font-bold">
+        {{ event.name }}
+      </a>
+      <p class="text-gray-600">{{ event.date.strftime('%Y-%m-%d') }}</p>
+    </li>
+  {% else %}
+    <li>No events found.</li>
+  {% endfor %}
+</ul>
+
+<!-- Pagination -->
+<div class="mt-4 flex space-x-2">
+  {% if events.has_prev %}
+    <a href="{{ url_for('index', page=events.prev_num) }}" class="px-3 py-1 border rounded">Previous</a>
+  {% endif %}
+  {% if events.has_next %}
+    <a href="{{ url_for('index', page=events.next_num) }}" class="px-3 py-1 border rounded">Next</a>
+  {% endif %}
+</div>
+{% endblock %}

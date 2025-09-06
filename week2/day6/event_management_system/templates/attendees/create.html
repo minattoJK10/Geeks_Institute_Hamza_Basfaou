@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Create Attendee{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Create Attendee</h1>
+
+<form method="POST" class="space-y-4 bg-white p-6 rounded shadow">
+  <div>
+    <label>Name</label>
+    <input type="text" name="name" required class="w-full border px-2 py-1 rounded">
+  </div>
+  <div>
+    <label>Email</label>
+    <input type="email" name="email" required class="w-full border px-2 py-1 rounded">
+  </div>
+  <div>
+    <label>Phone</label>
+    <input type="text" name="phone" class="w-full border px-2 py-1 rounded">
+  </div>
+  <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Create</button>
+</form>
+{% endblock %}

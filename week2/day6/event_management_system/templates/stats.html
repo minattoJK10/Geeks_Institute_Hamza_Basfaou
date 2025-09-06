@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Dashboard</h2>
+
+<div class="grid md:grid-cols-2 gap-6">
+  <div class="bg-white p-4 rounded shadow">
+    <h3 class="font-medium mb-2">Events per Organizer</h3>
+    <canvas id="orgChart"></canvas>
+  </div>
+
+  <div class="bg-white p-4 rounded shadow">
+    <h3 class="font-medium mb-2">Most Popular Events (by registrations)</h3>
+    <canvas id="popularChart"></canvas>
+  </div>
+
+  <div class="bg-white p-4 rounded shadow md:col-span-2">
+    <h3 class="font-medium mb-2">Total Attendees Over Time</h3>
+    <canvas id="timeChart"></canvas>
+  </div>
+</div>
+<script id="chart-data" type="application/json">
+  {
+    "eventsPerOrgLabels": {{ org_labels|tojson }},
+    "eventsPerOrgData": {{ org_counts|tojson }},
+    "popularLabels": {{ popular_labels|tojson }},
+    "popularData": {{ popular_counts|tojson }},
+    "timeLabels": {{ time_labels|tojson }},
+    "timeData": {{ time_counts|tojson }}
+  }
+</script>
+<script>
+  const data = JSON.parse(document.getElementById("chart-data").textContent);
+
+  const eventsPerOrgLabels = data.eventsPerOrgLabels;
+  const eventsPerOrgData = data.eventsPerOrgData;
+  const popularLabels = data.popularLabels;
+  const popularData = data.popularData;
+  const timeLabels = data.timeLabels;
+  const timeData = data.timeData;
+
+  new Chart(document.getElementById('orgChart'), {
+    type: 'bar',
+    data: { labels: eventsPerOrgLabels, datasets: [{ label: 'Events', data: eventsPerOrgData }] },
+    options: { responsive: true, maintainAspectRatio: false }
+  });
+
+  new Chart(document.getElementById('popularChart'), {
+    type: 'bar',
+    data: { labels: popularLabels, datasets: [{ label: 'Registrations', data: popularData }] },
+    options: { responsive: true, maintainAspectRatio: false }
+  });
+
+  new Chart(document.getElementById('timeChart'), {
+    type: 'line',
+    data: { labels: timeLabels, datasets: [{ label: 'Registrations', data: timeData }] },
+    options: { responsive: true, maintainAspectRatio: false }
+  });
+</script>
+
+{% endblock %}

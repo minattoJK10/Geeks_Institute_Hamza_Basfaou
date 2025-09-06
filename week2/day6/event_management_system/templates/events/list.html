@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Events</h1>
+<a href="{{ url_for('events.create_event') }}" class="mb-4 inline-block px-4 py-2 bg-green-600 text-white rounded">+ Create Event</a>
+
+<table class="w-full bg-white border rounded">
+  <tr class="bg-gray-200">
+    <th class="p-2">Name</th>
+    <th class="p-2">Date</th>
+    <th class="p-2">Organizer</th>
+    <th class="p-2">Actions</th>
+  </tr>
+{% for event in events %}
+<tr>
+  <td class="p-2">{{ event.name }}</td>
+  <td class="p-2">{{ event.date.strftime('%Y-%m-%d') }}</td>
+  <td class="p-2">{{ event.organizer.name if event.organizer else 'N/A' }}</td>
+  <td class="p-2">
+    <a href="{{ url_for('events.edit', event_id=event.id) }}" class="text-blue-600">Edit</a> |
+    <a href="{{ url_for('events.details', event_id=event.id) }}" class="text-green-600">Details</a>
+  </td>
+</tr>
+{% else %}
+<tr><td colspan="4" class="p-2 text-center">No events available.</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

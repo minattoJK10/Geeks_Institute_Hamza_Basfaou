@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Organizers{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Organizers</h1>
+
+<a href="{{ url_for('organizers.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Add Organizer</a>
+
+<ul class="space-y-2">
+  {% for organizer in pagination.items %}
+    <li class="p-2 bg-white rounded shadow flex justify-between items-center">
+      <span>{{ organizer.name }} - {{ organizer.email }} - {{ organizer.phone or "N/A" }}</span>
+      <span class="space-x-2">
+        <a href="{{ url_for('organizers.edit', org_id=organizer.id) }}" class="text-blue-500">Edit</a>
+        <form action="{{ url_for('organizers.delete', org_id=organizer.id) }}" method="POST" class="inline">
+          <button type="submit" class="text-red-500">Delete</button>
+        </form>
+      </span>
+    </li>
+  {% endfor %}
+</ul>
+
+<div class="mt-4 flex justify-between">
+  {% if pagination.has_prev %}
+    <a href="{{ url_for('organizers.list_organizers', page=pagination.prev_num) }}" class="text-blue-500">Prev</a>
+  {% endif %}
+  {% if pagination.has_next %}
+    <a href="{{ url_for('organizers.list_organizers', page=pagination.next_num) }}" class="text-blue-500">Next</a>
+  {% endif %}
+</div>
+{% endblock %}

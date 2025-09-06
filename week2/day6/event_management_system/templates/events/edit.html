@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Edit Event{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Edit Event</h1>
+<form method="post" class="space-y-4">
+  <div>
+    <label for="name">Name</label><br>
+    <input type="text" id="name" name="name" value="{{ event.name }}" class="border rounded p-2 w-full">
+  </div>
+  <div>
+    <label for="date">Date</label><br>
+    <input type="date" id="date" name="date" value="{{ event.date }}" class="border rounded p-2 w-full">
+  </div>
+  <div>
+    <label for="time">Time</label><br>
+    <input type="time" id="time" name="time" value="{{ event.time }}" class="border rounded p-2 w-full">
+  </div>
+  <div>
+    <label for="location">Location</label><br>
+    <input type="text" id="location" name="location" value="{{ event.location }}" class="border rounded p-2 w-full">
+  </div>
+  <div>
+    <label for="description">Description</label><br>
+    <textarea id="description" name="description" class="border rounded p-2 w-full">{{ event.description }}</textarea>
+  </div>
+  <div>
+    <label for="max_attendees">Max Attendees</label><br>
+    <input type="number" id="max_attendees" name="max_attendees" value="{{ event.max_attendees }}" class="border rounded p-2 w-full">
+  </div>
+  <div>
+    <label for="organizer_id">Organizer</label><br>
+    <select id="organizer_id" name="organizer_id" class="border rounded p-2 w-full">
+      <option value="">-- Select Organizer --</option>
+      {% for organizer in organizers %}
+        <option value="{{ organizer.id }}" {% if event.organizer_id == organizer.id %}selected{% endif %}>
+          {{ organizer.name }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded">Update</button>
+</form>
+{% endblock %}
