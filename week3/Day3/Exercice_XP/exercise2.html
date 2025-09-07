@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise 2 - Work with Forms</title>
+  <style>
+    /* Some basic styling for clarity */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    form {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      width: 300px;
+      background: #f9f9f9;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 95%;
+      padding: 5px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #007BFF;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    ul.usersAnswer {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul.usersAnswer li {
+      background: #e3f2fd;
+      margin: 5px 0;
+      padding: 8px;
+      border: 1px solid #90caf9;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Form Submission Exercise</h1>
+
+  <!-- The Form -->
+  <form>
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="firstname" placeholder="Enter first name"><br>
+
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lastname" placeholder="Enter last name"><br><br>
+
+    <input type="submit" value="Submit" id="submit">
+  </form> 
+
+  <!-- Where the answers will appear -->
+  <ul class="usersAnswer"></ul>
+
+  <script src="exercise2.js"></script>
+</body>
+</html>
