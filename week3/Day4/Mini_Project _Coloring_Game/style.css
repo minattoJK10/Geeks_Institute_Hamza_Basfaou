@@ -1,0 +1,68 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+#main-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Sidebar with palette */
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#clear-btn {
+  width: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#color-palette {
+  display: grid;
+  grid-template-columns: repeat(3, 50px);
+  grid-auto-rows: 50px;
+  gap: 5px;
+}
+
+.color {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  transition: transform 0.1s;
+}
+
+.color:hover {
+  transform: scale(1.1);
+}
+
+/* Canvas */
+#canvas {
+  display: grid;
+  grid-template-columns: repeat(40, 20px);
+  grid-template-rows: repeat(30, 20px);
+  gap: 1px;
+  touch-action: none; /* Prevent scroll on touch */
+}
+
+.square {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+}
