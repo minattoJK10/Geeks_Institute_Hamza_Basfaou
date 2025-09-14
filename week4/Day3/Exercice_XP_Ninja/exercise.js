@@ -20,3 +20,4 @@ class Flamingo extends Bird {
 
 // Create an instance of Flamingo
 const pet = new Flamingo();
+.
