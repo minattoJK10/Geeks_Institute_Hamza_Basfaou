@@ -1,0 +1,50 @@
+[
+  {
+    "name": "FE-Intern-A",
+    "createdAt": "2025-09-15T13:23:10.706324",
+    "candidates": [
+      {
+        "email": "amina@example.com",
+        "firstName": "Amina",
+        "lastName": "El Idrissi"
+      },
+      {
+        "email": "hamza@example.com",
+        "firstName": "Hamza",
+        "lastName": "Basfaou"
+      }
+    ]
+  },
+  {
+    "name": "FE-Intern-A",
+    "createdAt": "2025-09-15T13:25:13.765288",
+    "candidates": [
+      {
+        "email": "amina@example.com",
+        "firstName": "Amina",
+        "lastName": "El Idrissi"
+      },
+      {
+        "email": "hamza@example.com",
+        "firstName": "Hamza",
+        "lastName": "Basfaou"
+      }
+    ]
+  },
+  {
+    "name": "FE-Intern-A",
+    "createdAt": "2025-09-15T13:31:04.759123+00:00",
+    "candidates": [
+      {
+        "email": "amina@example.com",
+        "firstName": "Amina",
+        "lastName": "El Idrissi"
+      },
+      {
+        "email": "hamza@example.com",
+        "firstName": "Hamza",
+        "lastName": "Basfaou"
+      }
+    ]
+  }
+]
