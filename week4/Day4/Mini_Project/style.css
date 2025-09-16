@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d1c0bc;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  background: #f7f1f1;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+#quote-section {
+  margin-bottom: 20px;
+}
+
+#quote {
+  font-size: 1.5em;
+  color: #444;
+}
+
+#author {
+  color: teal;
+  font-weight: bold;
+}
+
+button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #5bc0de;
+  color: white;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #31b0d5;
+}
+
+hr {
+  margin: 20px 0;
+}
