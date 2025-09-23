@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Wars API - Async Example</title>
+</head>
+<body>
+  <h1>Star Wars Starship Info</h1>
+
+  <script>
+    // Create an async function
+    async function getStarship() {
+      const apiURL = "https://www.swapi.tech/api/starships/9/";
+
+      try {
+        // Fetch the data
+        const response = await fetch(apiURL);
+
+        // Check if the response is okay
+        if (!response.ok) {
+          throw new Error(`HTTP Error! Status: ${response.status}`);
+        }
+
+        // Parse the response JSON
+        const data = await response.json();
+
+        // Log the result
+        console.log(data.result); 
+      } catch (error) {
+        console.error("Error fetching starship data:", error.message);
+      }
+    }
+
+    // Call the async function
+    getStarship();
+  </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giphy API Fetch Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #gif-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    img {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hilarious GIFs</h1>
+  <div id="gif-container"></div>
+
+  <script>
+    // API URL
+    const apiURL = "https://api.giphy.com/v1/gifs/search?q=hilarious&rating=g&api_key=hpvZycW22qCjn5cRM1xtWB8NKq4dQ2My";
+
+    // Function to fetch GIFs
+    async function fetchGifs() {
+      try {
+        const response = await fetch(apiURL);
+
+        // Check if the response is okay
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        // Parse the response into JSON
+        const data = await response.json();
+        console.log(data); // Logs the full response like your screenshot
+
+        // Display GIFs
+        displayGifs(data.data);
+      } catch (error) {
+        console.error("Error fetching GIFs:", error.message);
+      }
+    }
+
+    // Function to display GIFs on the page
+    function displayGifs(gifs) {
+      const gifContainer = document.getElementById('gif-container');
+      gifContainer.innerHTML = ""; // Clear previous results
+
+      gifs.forEach(gif => {
+        const img = document.createElement('img');
+        img.src = gif.images.fixed_height.url; // Get GIF image URL
+        img.alt = gif.title;
+        gifContainer.appendChild(img);
+      });
+    }
+
+    // Call the function
+    fetchGifs();
+  </script>
+
+</body>
+</html>
