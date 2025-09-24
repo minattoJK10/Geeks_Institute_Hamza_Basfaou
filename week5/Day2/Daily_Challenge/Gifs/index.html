@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Giphy Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-left: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #gif-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gif-item {
+      position: relative;
+      display: inline-block;
+    }
+
+    .gif-item img {
+      width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .delete-btn {
+      display: block;
+      margin: 10px auto 0;
+      padding: 6px 10px;
+      font-size: 14px;
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #delete-all {
+      background-color: darkred;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎞 Random Giphy Search</h1>
+
+  <!-- Search Form -->
+  <form id="gif-form">
+    <input type="text" id="search-input" placeholder="Enter a category (e.g., sun)" required />
+    <button type="submit">Search GIF</button>
+  </form>
+
+  <!-- Delete All Button -->
+  <button id="delete-all">DELETE ALL</button>
+
+  <!-- Container for GIFs -->
+  <div id="gif-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

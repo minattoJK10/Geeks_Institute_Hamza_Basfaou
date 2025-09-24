@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunrise Time Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      margin: 20px auto;
+      max-width: 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+    }
+
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #007BFF;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>☀ Sunrise Finder</h1>
+  <p>Enter the latitude and longitude of two cities to find their sunrise times.</p>
+
+  <!-- Form -->
+  <form id="sunrise-form">
+    <div>
+      <h3>City 1</h3>
+      <input type="number" id="lat1" placeholder="Latitude (e.g., 48.864716)" step="any" required />
+      <input type="number" id="lng1" placeholder="Longitude (e.g., 2.349014)" step="any" required />
+    </div>
+    <div>
+      <h3>City 2</h3>
+      <input type="number" id="lat2" placeholder="Latitude (e.g., 40.730610)" step="any" required />
+      <input type="number" id="lng2" placeholder="Longitude (e.g., -73.935242)" step="any" required />
+    </div>
+    <button type="submit">Find Sunrise Times</button>
+  </form>
+
+  <!-- Result Display -->
+  <div id="result"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
