@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <style>
+    body {
+      font-family: "Trebuchet MS", sans-serif;
+      background: url("https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW9uZXl8ZW58MHx8MHx8fDA%3D") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(6px);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 350px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+      color: white;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #444;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #222;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .switch-btn {
+      margin: 10px auto;
+      background: #008cba;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Currency Converter</h1>
+
+    <label for="fromCurrency">From:</label>
+    <select id="fromCurrency"></select>
+
+    <label for="toCurrency">To:</label>
+    <select id="toCurrency"></select>
+
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" value="1">
+
+    <button onclick="convertCurrency()">Convert</button>
+    <button class="switch-btn" onclick="switchCurrencies()">⇆ Switch</button>
+
+    <div class="result" id="result">---</div>
+  </div>
+
+  <script>
+    const apiKey = "a3635849b4537fc0daf4ae2c"; // remplace avec ta clé ExchangeRate API
+
+    // Charger les devises
+    async function loadCurrencies() {
+      const res = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/codes`);
+      const data = await res.json();
+
+      const currencies = data.supported_codes;
+      const fromSelect = document.getElementById("fromCurrency");
+      const toSelect = document.getElementById("toCurrency");
+
+      currencies.forEach(([code, name]) => {
+        let option1 = document.createElement("option");
+        option1.value = code;
+        option1.textContent = `${code} - ${name}`;
+        fromSelect.appendChild(option1);
+
+        let option2 = document.createElement("option");
+        option2.value = code;
+        option2.textContent = `${code} - ${name}`;
+        toSelect.appendChild(option2);
+      });
+
+      fromSelect.value = "USD";
+      toSelect.value = "ILS";
+    }
+
+    // Conversion
+    async function convertCurrency() {
+      const from = document.getElementById("fromCurrency").value;
+      const to = document.getElementById("toCurrency").value;
+      const amount = document.getElementById("amount").value;
+
+      const res = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/pair/${from}/${to}/${amount}`);
+      const data = await res.json();
+
+      document.getElementById("result").textContent = `${data.conversion_result} ${to}`;
+    }
+
+    // Switch devises
+    function switchCurrencies() {
+      const from = document.getElementById("fromCurrency");
+      const to = document.getElementById("toCurrency");
+
+      [from.value, to.value] = [to.value, from.value];
+      convertCurrency();
+    }
+
+    loadCurrencies();
+  </script>
+</body>
+</html>
