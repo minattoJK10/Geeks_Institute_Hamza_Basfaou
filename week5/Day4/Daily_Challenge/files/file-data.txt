@@ -1,0 +1,2 @@
+This is some text inside file-data.txt.
+Learning Node.js is fun!
