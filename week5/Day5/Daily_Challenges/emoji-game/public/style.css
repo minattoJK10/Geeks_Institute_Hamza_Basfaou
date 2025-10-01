@@ -1,0 +1,5 @@
+body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+input { margin: 5px; padding: 5px; }
+button { margin: 5px; padding: 10px; }
+#timer { font-weight: bold; margin: 10px 0; }
+#score-display { margin: 10px; }
