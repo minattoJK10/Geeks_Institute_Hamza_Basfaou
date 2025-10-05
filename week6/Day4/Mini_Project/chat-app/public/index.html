@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chat App</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- Login / join overlay -->
+    <div id="join-screen" class="overlay">
+      <div class="card">
+        <h2>Join Chat</h2>
+        <input id="username" placeholder="Username" />
+        <input id="room" placeholder="Room name (e.g., general)" />
+        <div class="row">
+          <button id="join-btn">Join</button>
+          <button id="random-btn">Random Room</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat UI -->
+    <div id="chat-screen" class="hidden">
+      <aside class="sidebar">
+        <h3>Room: <span id="room-name"></span></h3>
+        <h4>Active Users</h4>
+        <ul id="users-list"></ul>
+        <div class="small">Tip: Click a user to start a private message (optional).</div>
+      </aside>
+
+      <main class="main">
+        <header class="header">
+          <div id="status">Connected</div>
+          <button id="leave-btn" class="btn-ghost">Leave</button>
+        </header>
+
+        <section id="messages" class="messages"></section>
+
+        <form id="message-form" class="message-form">
+          <input id="message-input" autocomplete="off" placeholder="Type a message..." />
+          <button type="submit">Send</button>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <audio id="notif-sound" src="/notification.wav" preload="auto"></audio>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/client.js"></script>
+</body>
+</html>
