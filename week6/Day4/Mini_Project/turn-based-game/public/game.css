@@ -1,0 +1,8 @@
+body { font-family: Arial, sans-serif; margin: 16px; }
+.board { display: grid; grid-template-columns: repeat(10, 32px); gap: 2px; margin-top: 12px; }
+.cell { width: 32px; height: 32px; display:flex; align-items:center; justify-content:center; border:1px solid #ddd; background:#f7f7f7; font-size:12px; }
+.cell.obstacle { background:#444; color:white; }
+.cell.base1 { background:#9fe4a6; }
+.cell.base2 { background:#f6a6a6; }
+.cell.p1 { border: 2px solid #067a00; }
+.cell.p2 { border: 2px solid #a60000; }

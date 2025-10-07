@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Turn-based Game</title>
+<link rel="stylesheet" href="game.css" />
+<style>
+  /* Optional: some spacing and board style adjustments */
+  #board { display: grid; grid-template-columns: repeat(10, 32px); gap: 2px; margin-top: 12px; }
+  .row { display: contents; }
+</style>
+</head>
+<body>
+<h1>Turn-based Capture-the-Base</h1>
+
+<div id="auth">
+  <input id="username" placeholder="username" />
+  <input id="password" placeholder="password" type="password" />
+  <button id="registerBtn">Register</button>
+  <button id="loginBtn">Login</button>
+  <p id="authMsg"></p>
+</div>
+
+<div id="controls" style="display:none;">
+  <p>Logged in as: <span id="me"></span></p>
+  <button id="createGame">Create Game</button>
+  <input id="gameIdInput" placeholder="game id to join" />
+  <button id="joinGame">Join Game</button>
+  <p id="gameMsg"></p>
+
+  <div id="boardContainer">
+    <div id="board"></div>
+  </div>
+
+  <div id="actions">
+    <button data-dir="up">Up</button>
+    <button data-dir="left">Left</button>
+    <button data-dir="right">Right</button>
+    <button data-dir="down">Down</button>
+    <button id="attackBtn">Attack</button>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
