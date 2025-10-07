@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Login</h2>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Username" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button type="submit" id="loginBtn" disabled>Login</button>
+  </form>
+  <p id="message"></p>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const btn = document.getElementById("loginBtn");
+    const inputs = form.querySelectorAll("input");
+
+    inputs.forEach(input => {
+      input.addEventListener("input", () => {
+        btn.disabled = [...inputs].some(i => !i.value);
+      });
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = {
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value
+      };
+
+      const res = await fetch("/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const msg = await res.json();
+      document.getElementById("message").innerText = msg.message || msg.error;
+    });
+  </script>
+</body>
+</html>
