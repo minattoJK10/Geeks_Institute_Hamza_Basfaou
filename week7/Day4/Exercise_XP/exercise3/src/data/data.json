@@ -1,0 +1,35 @@
+{
+  "SocialMedias": [
+    "https://github.com/",
+    "https://www.linkedin.com/",
+    "https://www.facebook.com/"
+  ],
+  "Skills": {
+    "ProgrammingLanguage": ["Java", "C#", "Python"],
+    "WebBasedApplicationDevelopment": [
+      "JavaScript (ES5, ES6)",
+      "TypeScript",
+      "HTML5",
+      "CSS (SCSS/SASS)",
+      "React"
+    ]
+  },
+  "Experiences": [
+    {
+      "company": "Xeniel Technologies",
+      "position": "Web Developer",
+      "location": "New York, USA",
+      "period": "2017-01-09 – Present",
+      "details": "Built and updated various Chrome Extensions.",
+      "image": "https://via.placeholder.com/100?text=NO+IMAGE"
+    },
+    {
+      "company": "Xeniel Technologies",
+      "position": "UI Designer",
+      "location": "Beijing, China",
+      "period": "2016-05-08 – 2018-09-20",
+      "details": "Design user-friendly web pages.",
+      "image": "https://via.placeholder.com/100?text=NO+IMAGE"
+    }
+  ]
+}
