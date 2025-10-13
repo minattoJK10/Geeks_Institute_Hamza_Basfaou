@@ -1,0 +1,65 @@
+.form-submit-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-submit-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-submit-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-submit-container .form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-submit-container .form-row label {
+  width: 100px;       /* largeur fixe pour labels */
+  text-align: right;  /* texte à droite */
+}
+
+.form-submit-container input {
+  width: 100%;        /* prend toute la largeur restante */
+  height: 40px;       /* hauteur fixe pour tous les inputs */
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.form-submit-container button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg,#66ea80 0%,#a2644b 100%);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.success-message {
+  margin-top: 20px;
+  color: green;
+  font-weight: 600;
+  text-align: center;
+}

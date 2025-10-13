@@ -1,0 +1,64 @@
+.userform-container {
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.userform-container h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 40px;
+}
+
+.userform-container p {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.userform-container form,
+.submitted-data {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.userform-container label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+.userform-container input {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.userform-container button {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg,#eab366 0%,#a24b4b 100%);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+.submitted-data p {
+  font-size: 1.1rem;
+  margin: 5px 0;
+}
