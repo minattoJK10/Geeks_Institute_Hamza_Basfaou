@@ -1,0 +1,100 @@
+.modal-background {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-body {
+  background: white;
+  border-radius: 8px;
+  min-width: 400px;
+  max-width: 500px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e1e5e9;
+  background-color: #f8f9fa;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #212529;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.error-title {
+  color: #dc3545;
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.error-details {
+  margin-bottom: 16px;
+}
+
+.error-details > div:first-child {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #212529;
+  font-size: 14px;
+}
+
+.error-stack {
+  background-color: #f8f9fa;
+  border: 1px solid #e1e5e9;
+  border-radius: 4px;
+  padding: 12px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  color: #495057;
+  line-height: 1.4;
+}
+
+.error-stack div {
+  margin-bottom: 2px;
+}
+
+.suggestion-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.suggestion {
+  color: #6c757d;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.btn-close {
+  padding: 8px 16px;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  background-color: #6c757d;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn-close:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
